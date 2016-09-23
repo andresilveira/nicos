@@ -1,0 +1,10 @@
+<h1>Websites</h1>
+
+<%= render 'form', website: @website %>
+
+<hr />
+<ul>
+  <% @websites.each do |website| %>
+    <li><%= render website %></li>
+  <% end %>
+</ul>
