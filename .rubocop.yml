@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - '**/*.jbuilder'
 Metrics/LineLength:
   Max: 120
 SpaceInsideHashLiteralBraces:
@@ -5,4 +9,6 @@ SpaceInsideHashLiteralBraces:
 SpaceInsideBrackets:
   Enabled: false
 Documentation:
+  Enabled: false
+Style/BlockDelimiters:
   Enabled: false
