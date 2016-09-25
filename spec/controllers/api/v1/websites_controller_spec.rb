@@ -9,7 +9,7 @@ RSpec.describe Api::V1::WebsitesController, type: :controller do
     { url: '' }
   }
 
-  before { request.accept = "application/json" }
+  before { request.accept = 'application/json' }
 
   describe 'GET #index' do
     it 'assigns all websites as @websites' do
