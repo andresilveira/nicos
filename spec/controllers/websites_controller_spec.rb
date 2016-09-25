@@ -15,6 +15,11 @@ RSpec.describe WebsitesController, type: :controller do
       get :index
       expect(assigns(:websites)).to eq([website])
     end
+
+    it 'assigns a new website as @websites' do
+      get :index
+      expect(assigns(:website)).to be_a_new(Website)
+    end
   end
 
   describe 'GET #show' do
