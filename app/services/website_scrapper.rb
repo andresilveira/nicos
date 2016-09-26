@@ -1,18 +1,23 @@
 class WebsiteScrapper
-  def initialize(website, driver = Mechanize.new)
+  attr_reader :website
+
+  def initialize(website, driver = Mechanize.new, url_validator = Validators::Url)
     @website = website
     @driver  = driver
+    @url_validator = url_validator
   end
 
   def go_get_it
-    page = @driver.get(@website.url)
-    set_title(page)
-    @website
+    if @url_validator.valid?(website.url)
+      page = @driver.get(website.url)
+      set_title(page)
+    end
+    website
   end
 
   private
 
   def set_title(page)
-    @website.title = page.title
+    website.title = page.title
   end
 end
