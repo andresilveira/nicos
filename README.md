@@ -1,6 +1,6 @@
 # NiCoS [![Code Climate](https://codeclimate.com/github/andresilveira/nicos/badges/gpa.svg)](https://codeclimate.com/github/andresilveira/nicos) [![Build Status](https://semaphoreci.com/api/v1/andresilveirah/nicos/branches/master/shields_badge.svg)](https://semaphoreci.com/andresilveirah/nicos)
 
-### It's a nice content scrapper :heart:
+### It's a nice content scraper :heart:
 
 Given an URL, NiCoS will visit the page referenced, parse its HTML content and store some elements such as headers (`<h1>`, `<h2>`, `<h3>`) and links (`<a>`).
 

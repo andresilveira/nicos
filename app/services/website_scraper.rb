@@ -1,4 +1,4 @@
-class WebsiteScrapper
+class WebsiteScraper
   attr_reader :website
 
   def initialize(website, driver = Mechanize.new, url_validator = Validators::Url)
