@@ -12,7 +12,8 @@ module Api
 
       # POST /websites
       def create
-        @website = Website.create(website_params)
+        @website = WebsiteScraper.new(Website.new(website_params)).go_get_it
+        @website.save
         respond_with @website
       end
 
