@@ -5,8 +5,6 @@ class Website < ApplicationRecord
   private
 
   def url_valid?
-    unless Validators::Url.valid?(url)
-      errors.add(:url, 'is not a valid url')
-    end
+    errors.add(:url, 'is not a valid url') unless Validators::Url.valid?(url)
   end
 end

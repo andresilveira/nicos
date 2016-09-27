@@ -10,14 +10,14 @@ class WebsiteScraper
   def go_get_it
     if @url_validator.valid?(website.url)
       page = @driver.get(website.url)
-      set_title(page)
+      fill_in_title(page)
     end
     website
   end
 
   private
 
-  def set_title(page)
+  def fill_in_title(page)
     website.title = page.title
   end
 end
