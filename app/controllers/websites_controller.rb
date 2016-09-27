@@ -13,7 +13,7 @@ class WebsitesController < ApplicationController
 
   # POST /websites
   def create
-    @website = Website.new(website_params)
+    @website = WebsiteScraper.new(Website.new(website_params)).go_get_it
 
     if @website.save
       redirect_to @website, notice: 'Website was successfully created.'
