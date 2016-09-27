@@ -48,6 +48,16 @@ RSpec.describe WebsitesController, type: :controller do
         post :create, params: { website: valid_attributes }
         expect(response).to redirect_to(Website.last)
       end
+
+      context 'will pass the website to the WebsiteScraper' do
+        let(:scraper) { double('scraper', go_get_it: Website.new) }
+        before { allow(WebsiteScraper).to receive(:new).and_return(scraper) }
+
+        it 'scraps the new Website' do
+          expect(scraper).to receive(:go_get_it)
+          post :create, params: { website: valid_attributes }
+        end
+      end
     end
 
     context 'with invalid params' do

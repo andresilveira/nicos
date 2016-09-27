@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'responders'
+gem 'mechanize'
 
 group :development, :test do
   gem 'byebug', platform: :mri
