@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923130657) do
+ActiveRecord::Schema.define(version: 20160927212030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "links", force: :cascade do |t|
+    t.string   "text"
+    t.string   "href"
+    t.integer  "website_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["website_id"], name: "index_links_on_website_id", using: :btree
+  end
 
   create_table "websites", force: :cascade do |t|
     t.string   "url"
@@ -23,4 +32,5 @@ ActiveRecord::Schema.define(version: 20160923130657) do
     t.index ["url"], name: "index_websites_on_url", using: :btree
   end
 
+  add_foreign_key "links", "websites"
 end
