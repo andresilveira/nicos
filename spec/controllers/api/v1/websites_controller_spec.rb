@@ -35,7 +35,7 @@ RSpec.describe Api::V1::WebsitesController, type: :controller do
 
       it 'should respond with created status' do
         post :create, params: { website: valid_attributes }
-        expect(response).to be_created
+        expect(response).to render_template('create')
       end
 
       context 'will pass the website to the WebsiteScraper' do
