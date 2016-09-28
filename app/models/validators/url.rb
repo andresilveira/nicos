@@ -1,7 +1,8 @@
 module Validators
   module Url
     def self.valid?(uri)
-      !uri.to_s.empty? && URI.parse(uri)
+      uri = URI.parse(uri.to_s)
+      uri.host.present? && uri.scheme.present?
     rescue URI::InvalidURIError
       false
     end
