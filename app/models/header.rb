@@ -3,6 +3,6 @@ class Header < ApplicationRecord
 
   HTML_TAGS = %w(h1 h2 h3).freeze
 
-  validates :tag, :text, presence: true
+  validates :tag, presence: true
   validates :tag, inclusion: HTML_TAGS
 end
