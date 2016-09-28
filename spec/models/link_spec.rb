@@ -7,7 +7,7 @@ RSpec.describe Link, type: :model do
       link.save
       expect(link.errors).to include(:href)
     end
-    
+
     it 'ensure a link has text' do
       link = Link.new(text: nil)
       link.save
