@@ -11,4 +11,9 @@
       <li><%= render 'link', link: link %>
     <% end %>
   </ul>
+  <ul>
+    <% website.headers.each do |header| %>
+      <li><%= render 'header', header: header %>
+    <% end %>
+  </ul>
 </div>
