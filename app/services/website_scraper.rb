@@ -12,6 +12,7 @@ class WebsiteScraper
       page = @driver.get(website.url)
       fill_in_title(page)
       fill_in_links(page)
+      fill_in_headers(page)
     end
     website
   end
@@ -20,6 +21,14 @@ class WebsiteScraper
 
   def link_adapter_class
     WebsiteScraper::LinkAdapter
+  end
+
+  def header_adapter_class
+    WebsiteScraper::HeaderAdapter
+  end
+
+  def headers_to_search_for
+    Header::HTML_TAGS
   end
 
   def fill_in_title(page)
@@ -33,6 +42,13 @@ class WebsiteScraper
         text: link.text,
         href: link.href
       )
+    end
+  end
+
+  def fill_in_headers(page)
+    page.search(*headers_to_search_for).each do |page_header|
+      header_attributes = header_adapter_class.new(page_header).to_h
+      website.headers.build(header_attributes)
     end
   end
 end

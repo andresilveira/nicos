@@ -6,12 +6,14 @@ RSpec.describe 'api/v1/websites/index' do
       Website.create!(
         url: 'http://codebikeandmore.com',
         title: 'Code, Bike & More',
-        links: [ Link.new(href: 'http://fakelink.fake', text: 'I am fake') ]
+        links: [ Link.new(href: 'http://fakelink.fake', text: 'I am fake') ],
+        headers: [ Header.new(tag: 'h1', text: 'I am a header') ]
       ),
       Website.create!(
         url: 'http://google.com',
         title: 'Google',
-        links: [ Link.new(href: 'http://anotherfakelink.fake', text: 'I am another fake') ]
+        links: [ Link.new(href: 'http://anotherfakelink.fake', text: 'I am another fake') ],
+        headers: [ Header.new(tag: 'h2', text: 'I am another header') ]
       )
     ]
   end
@@ -44,6 +46,18 @@ RSpec.describe 'api/v1/websites/index' do
       it 'with their text' do
         expect(parsed_response[:websites].first[:links].first[:text]).to eq('I am fake')
         expect(parsed_response[:websites].last[:links].first[:text]).to eq('I am another fake')
+      end
+    end
+
+    describe 'show their headers' do
+      it 'with their tag' do
+        expect(parsed_response[:websites].first[:headers].first[:tag]).to eq('h1')
+        expect(parsed_response[:websites].last[:headers].first[:tag]).to eq('h2')
+      end
+
+      it 'with their text' do
+        expect(parsed_response[:websites].first[:headers].first[:text]).to eq('I am a header')
+        expect(parsed_response[:websites].last[:headers].first[:text]).to eq('I am another header')
       end
     end
   end

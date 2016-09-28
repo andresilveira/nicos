@@ -15,6 +15,11 @@ RSpec.describe WebsiteScraper do
       complete_website = WebsiteScraper.new(website).go_get_it
       expect(complete_website.links).to_not be_empty
     end
+
+    it 'fills in the headers of a webiste' do
+      complete_website = WebsiteScraper.new(website).go_get_it
+      expect(complete_website.headers).to_not be_empty
+    end
   end
 
   context 'with a invalid url' do
