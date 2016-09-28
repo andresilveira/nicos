@@ -3,6 +3,7 @@ class Website < ApplicationRecord
   validate  :url_valid?
 
   has_many :links, dependent: :destroy
+  has_many :headers, dependent: :destroy
 
   private
 
