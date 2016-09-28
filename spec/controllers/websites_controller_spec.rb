@@ -31,6 +31,12 @@ RSpec.describe WebsitesController, type: :controller do
   end
 
   describe 'POST #create' do
+    it 'assigns all websites as @websites' do
+      website = Website.create! valid_attributes
+      post :create, params: { website: valid_attributes }
+      expect(assigns(:websites)).to include(website)
+    end
+
     context 'with valid params' do
       it 'creates a new Website' do
         expect {

@@ -13,6 +13,7 @@ class WebsitesController < ApplicationController
 
   # POST /websites
   def create
+    @websites = Website.all
     @website = WebsiteScraper.new(Website.new(website_params)).go_get_it
 
     if @website.save
