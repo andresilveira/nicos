@@ -2,6 +2,8 @@ class Website < ApplicationRecord
   validates :url, presence: true
   validate  :url_valid?
 
+  has_many :links, dependent: :destroy
+
   private
 
   def url_valid?

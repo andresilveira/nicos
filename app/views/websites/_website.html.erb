@@ -1,7 +1,14 @@
-<%= link_to website.title, website_path(website) if website.title %>
-|
-<%= link_to website.url, website.url, target: :_blank %>
-|
-<%= link_to '&times;'.html_safe, website, method: :delete, data: {
-  confirm: 'Are you sure you want to delete this website?'
-} %>
+<div>
+  <%= link_to website.title, website_path(website) if website.title %>
+  |
+  <%= link_to website.url, website.url, target: :_blank %>
+  |
+  <%= link_to '&times;'.html_safe, website, method: :delete, data: {
+    confirm: 'Are you sure you want to delete this website?'
+  } %>
+  <ul>
+    <% website.links.each do |link| %>
+      <li><%= render 'link', link: link %>
+    <% end %>
+  </ul>
+</div>
